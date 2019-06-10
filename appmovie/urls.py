@@ -6,6 +6,8 @@ from . import views
 
 urlpatterns = [
     path('', views.index, name='index'),
+    path('login.html',views.login, name='login'),
+    #path('description.html', views.description, name='description')
 ]
 
 if settings.DEBUG:
