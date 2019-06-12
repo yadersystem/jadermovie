@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}Register User{% endblock %}
+
+{% block content %}
+    <form method="post">
+        {% csrf_token %}
+        <h3>Desea Eliminar el registro  de {{ object.first_name }}</h3>
+        <button class="btn btn-danger" type="submit">Delete</button>
+        <a href="{% url 'appmovie:UserList' %}" class="btn btn-info">Cancelar</a>
+    </form>
+{% endblock %}

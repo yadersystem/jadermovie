@@ -19,7 +19,7 @@ from django.urls import include, path
 from django.conf import settings
 
 urlpatterns = [
-    path('appmovie/', include('appmovie.urls')),
+    path('appmovie/', include(('appmovie.urls', 'appmovie'))),
     path('admin/', admin.site.urls),
 ]
 

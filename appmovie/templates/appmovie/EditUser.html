@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}Edit User{% endblock %}
+
+
+{% block content %}
+    <div class="container">
+        <form method="post">
+            {% csrf_token %}
+{#            {{ form.as_p }}#}
+            <label for="{{ form.username.id }}">{{ form.username.label }}</label>
+            {{ form.username }}
+            <label for="{{ form.first_name.id }}">{{ form.first_name.label }}</label>
+            {{ form.first_name }}
+            <label for="{{ form.last_name.id }}">{{ form.last_name.label }}</label>
+            {{ form.last_name }}
+            <label for="{{ form.email.id }}">{{ form.email.label }}</label>
+            {{ form.email }}
+            <label for="{{ form.password.id }}">{{ form.password.label }}</label>
+            {{ form.password }}
+            <label for="{{ form.date_joined.id }}">{{ form.date_joined.label }}</label> <br>
+            {{ form.date_joined }} <br>
+            <button type="submit">Update</button>
+        </form>
+    </div>
+{% endblock %}
