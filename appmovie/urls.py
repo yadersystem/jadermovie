@@ -3,8 +3,7 @@ from django.urls import path
 from django.views.static import serve
 from JaderMovie import settings
 from . import views
-from appmovie.views import UserList
-
+from django.contrib.auth.views import login_required
 
 urlpatterns = [
     path('', views.index, name='index'),
@@ -15,6 +14,7 @@ urlpatterns = [
     path('admin',views.UserList.as_view(),name='UserList'),
     path('admin/<int:pk>/EditUser',views.UpdateUser.as_view(),name='UpdateUser'),
     path('admin/<int:pk>/deleteuser',views.DeleteUser.as_view(),name='deleteuser'),
+    #path('login','template_name':'login.html',name = 'login')
 ]
 
 if settings.DEBUG:
