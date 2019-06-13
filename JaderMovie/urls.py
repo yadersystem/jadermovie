@@ -21,6 +21,8 @@ from django.conf import settings
 urlpatterns = [
     path('appmovie/', include(('appmovie.urls', 'appmovie'))),
     path('admin/', admin.site.urls),
+    # Create login
+    path('appmovie/', include('django.contrib.auth.urls')),
 ]
 
 if settings.DEBUG:

@@ -8,6 +8,13 @@ from django import forms
 
 
 class UserForm(forms.ModelForm):
+
+    def save(self, commit=True):
+        user = super(UserForm, self).save(commit=commit)
+        user.set_password(self.cleaned_data.get('password'))
+        user.save()
+        return user
+
     class Meta:
         model = User
         fields = [

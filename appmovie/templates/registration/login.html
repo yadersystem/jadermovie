@@ -1,47 +1,108 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% block title %}Login{% endblock %}
-
-
-
+#-------------------------------------------------------------
 {% block content %}
-    <div class="container text-center">
-        <div>
+    <form method="post">
+      {% csrf_token %}
+      <div class="container align-content-center">
+        <div class="container align-content-center">
             <span>
 			    Account Login
             </span>
-
-			<form>
-
-			    <div>
-					<input type="text" name="username" placeholder="User name">
-					<span></span>
-				</div>
-
-				<div>
-					<input name="pass" placeholder="Password">
-					<span></span>
-				</div>
-
-                    <div class="container">
-                        <a href="registeruser">Register User</a>
+			<form method="post">
+                {% for error in form.non_field_errors %}
+                    {{ error }}
+                {% endfor %}
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="username">Usename</label>
+                            <input class="form-control" type="text" name="username">
+                        </div>
                     </div>
+                </div>
 
-                    <div class="container">
-                        <a href="#Olvide mi clave">Reset Password</a>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input class="form-control" type="password" name="password">
+                        </div>
                     </div>
+                </div>
 
-					<div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <a href="#">Reset Password</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <a href="registeruser">Create User</a>
+                        </div>
+                    </div>
+                </div>
 
-						<button>
-							Login
-						</button>
-					</div>
-
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input class="btn btn-primary" type="submit" value="Login">
+                        </div>
+                    </div>
+                </div>
             </form>
         </div>
     </div>
+    </form>
 {% endblock %}
+#-------------------------------------------------------------
+
+
+
+
+
+{#{% block content %}#}
+{#    <div class="container text-center">#}
+{#        <div>#}
+{#            <span>#}
+{#			    Account Login#}
+{#            </span>#}
+{##}
+{#			<form>#}
+{##}
+{#			    <div>#}
+{#					<input type="text" name="username" placeholder="User name">#}
+{#					<span></span>#}
+{#				</div>#}
+{##}
+{#				<div>#}
+{#					<input name="pass" placeholder="Password">#}
+{#					<span></span>#}
+{#				</div>#}
+{##}
+{#                    <div class="container">#}
+{#                        <a href="registeruser">Register User</a>#}
+{#                    </div>#}
+{##}
+{#                    <div class="container">#}
+{#                        <a href="#Olvide mi clave">Reset Password</a>#}
+{#                    </div>#}
+{##}
+{#					<div class="container">#}
+{##}
+{#						<button>#}
+{#							Login#}
+{#						</button>#}
+{#					</div>#}
+{##}
+{#            </form>#}
+{#        </div>#}
+{#    </div>#}
+{#{% endblock %}#}
 
 {% comment %}
 {% block content %}

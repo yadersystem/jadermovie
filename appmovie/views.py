@@ -18,7 +18,7 @@ def index(request):
 
 def login(request):
 
-    return render(request,'appmovie/login.html')
+    return render(request, 'appmovie/templates/registration/login.html')
 
 
 def description(request):
@@ -35,10 +35,6 @@ class CreateUser(CreateView):
     template_name = 'appmovie/RegisterUser.html'
     form_class = UserForm
     success_url = reverse_lazy('appmovie:login')
-
-    def form_invalid(self, form):
-        print(form.errors)
-        return super(CreateUser, self).form_invalid(form)
 
 
 class UserList(ListView):

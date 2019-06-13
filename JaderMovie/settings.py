@@ -124,4 +124,5 @@ try:
 except IOError:
     raise Exception('Error Reading local setting')
 
-#LOGIN_REDIRECT_URL = reverse_lazy('appmovie:UserList')
+LOGIN_REDIRECT_URL = reverse_lazy('appmovie:UserList')
+LOGOUT_REDIRECT_URL = '/login/'
