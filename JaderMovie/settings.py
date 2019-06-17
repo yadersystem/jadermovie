@@ -16,8 +16,8 @@ import os
 from django.urls import reverse_lazy
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-MEDIA_ROOT = os.path.join(BASE_DIR,'img')
-MEDIA_URL = "/appmovie/img/"
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = "/media/"
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
@@ -43,6 +43,9 @@ INSTALLED_APPS = [
     'appmovie',
 
     'debug_toolbar',
+
+    'rest_framework',
+    'rest_framework.authtoken',
 ]
 
 
@@ -63,7 +66,7 @@ ROOT_URLCONF = 'JaderMovie.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR,'/home/jader/Escritorio/LSV-TECH/Luis/jadermovie/appmovie/templates/appmovie')],
+        'DIRS': [os.path.join(BASE_DIR,'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -119,10 +122,17 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (os.path.join(BASE_DIR,'static'),)
 
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10
+}
+
+
+LOGIN_REDIRECT_URL = reverse_lazy('appmovie:UserList')
+LOGOUT_REDIRECT_URL = '/login/'
+
 try:
     exec(open(os.path.join(BASE_DIR,'JaderMovie/local_settings.py')).read())
 except IOError:
     raise Exception('Error Reading local setting')
 
-LOGIN_REDIRECT_URL = reverse_lazy('appmovie:UserList')
-LOGOUT_REDIRECT_URL = '/login/'

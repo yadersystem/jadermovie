@@ -58,9 +58,8 @@
               </li>
 
               <li class="nav-item">
-                <a class="nav-link" href="login">Logout</a>
+                <a class="nav-link" href="{% url 'appmovie:login' %}">Logout</a>
               </li>
-
             </ul>
 
             <form class="form-inline my-2 my-lg-0">
@@ -71,35 +70,35 @@
         </nav>
     {% endblock %}
 
-    {% block content %} {% endblock %}
+    {% block content %}
 
-    {% block footer %}
-      <!-- Footer -->
-        <footer class="page-footer font-small blue navbar-dark bg-dark ">
-          <!-- Copyright -->
-          <div class="footer-copyright text-center py-3">© 2019 Copyright:
-            <a href="https://lsv-tech.com/"> LSV - TECH </a>
-          </div>
-        </footer>
-      <!-- Footer -->
     {% endblock %}
 
+{#    {% block footer %}#}
+{#      <!-- Footer -->#}
+{#        <footer class="page-footer font-small blue navbar-dark bg-dark ">#}
+{#          <!-- Copyright -->#}
+{#          <div class="footer-copyright text-center py-3">© 2019 Copyright:#}
+{#            <a href="https://lsv-tech.com/"> LSV - TECH </a>#}
+{#          </div>#}
+{#        </footer>#}
+{#      <!-- Footer -->#}
+{#    {% endblock %}#}
 
-
-          <script src="{% static 'js/jquery-3.3.1.min.js'%}"></script>
-          <script src="{% static 'js/jquery-migrate-3.0.1.min.js'%}"></script>
-          <script src="{% static 'js/jquery-ui.js'%}"></script>
-          <script src="{% static 'js/popper.min.js'%}"></script>
-          <script src="{% static 'js/bootstrap.min.js'%}"></script>
-          <script src="{% static 'js/owl.carousel.min.js'%}"></script>
-          <script src="{% static 'js/jquery.stellar.min.js'%}"></script>
-          <script src="{% static 'js/jquery.countdown.min.js'%}"></script>
-          <script src="{% static 'js/bootstrap-datepicker.min.js'%}"></script>
-          <script src="{% static 'js/jquery.easing.1.3.js'%}"></script>
-          <script src="{% static 'js/aos.js'%}"></script>
-          <script src="{% static 'js/jquery.fancybox.min.js'%}"></script>
-          <script src="{% static 'js/jquery.sticky.js'%}"></script>
-          <script src="{% static 'js/main.js'%}"></script>
+        <script src="{% static 'js/jquery-3.3.1.min.js'%}"></script>
+        <script src="{% static 'js/jquery-migrate-3.0.1.min.js'%}"></script>
+        <script src="{% static 'js/jquery-ui.js'%}"></script>
+        <script src="{% static 'js/popper.min.js'%}"></script>
+        <script src="{% static 'js/bootstrap.min.js'%}"></script>
+        <script src="{% static 'js/owl.carousel.min.js'%}"></script>
+        <script src="{% static 'js/jquery.stellar.min.js'%}"></script>
+        <script src="{% static 'js/jquery.countdown.min.js'%}"></script>
+        <script src="{% static 'js/bootstrap-datepicker.min.js'%}"></script>
+        <script src="{% static 'js/jquery.easing.1.3.js'%}"></script>
+        <script src="{% static 'js/aos.js'%}"></script>
+        <script src="{% static 'js/jquery.fancybox.min.js'%}"></script>
+        <script src="{% static 'js/jquery.sticky.js'%}"></script>
+        <script src="{% static 'js/main.js'%}"></script>
 
     {% block extrajs %}
     {% endblock %}

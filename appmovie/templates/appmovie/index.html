@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'appmovie/base.html' %}
 {% load staticfiles %}
 {% block title %}Home{% endblock %}
 
@@ -72,18 +72,21 @@
     <div class="container h-100" id="section_pelis">
 
         <div class="row margin-top" id="peli">
-
+            {% if object_list %}
+                    {% for movie in object_list %}
             <div class="card mx-auto" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="...">
+                <img src="{{ movie.poster.url }}" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="description.html" class="btn btn-primary">Go somewhere</a>
+                    <h5 class="card-title">{{ movie.title }}</h5>
+                    <p class="card-text">{{ movie.detail }}</p>
+                    <a href="description.html" class="btn btn-primary">Description</a>
                 </div>
             </div>
-
-
-
+            {% endfor %}
+                {% else %}
+                    <h1>No Hay Peliculas</h1>
+                {% endif %}
         </div>
+
     </div>
 {% endblock %}
