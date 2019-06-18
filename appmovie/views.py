@@ -113,3 +113,5 @@ class MovieRateUpdateView(UpdateAPIView):
 class MovieRateDeleteView(DestroyAPIView):
     queryset = MovieRaiting.objects.all()
     serializer_class = MovieRaitingSerializer
+
+
