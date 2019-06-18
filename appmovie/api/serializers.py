@@ -25,3 +25,24 @@ class MovieRaitingSerializer(serializers.ModelSerializer):
     class Meta:
         model = MovieRaiting
         fields = ('movie','user','vote','id')
+
+
+class MovieRaitingSerializerCreate(serializers.ModelSerializer):
+
+    class Meta:
+        model=MovieRaiting
+        fields = ('movie','user','vote','comment')
+
+
+class MovieRaitingSerializerUpdate(serializers.ModelSerializer):
+
+    class Meta:
+        model=MovieRaiting
+        fields = ('movie','vote','comment')
+
+
+class MovieRaitingSerializerDelete(serializers.ModelSerializer):
+
+    class Meta:
+        model = MovieRaiting
+        field = ('id')

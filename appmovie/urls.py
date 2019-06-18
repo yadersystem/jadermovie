@@ -4,7 +4,8 @@ from django.urls import path, include
 from django.views.generic import TemplateView
 from django.views.static import serve
 from JaderMovie import settings
-from appmovie.views import MovieRateListView, MovieRateDetailView
+from appmovie.views import MovieRateListView, MovieRateDetailView, MovieRateCreateView, MovieRateUpdateView, \
+    MovieRateDeleteView
 from . import views
 
 from django.contrib.auth.views import login_required
@@ -25,7 +26,9 @@ urlpatterns = [
     path('api_detail/<int:id>',views.MovieDetailView.as_view(),name='api_detail'),
     path('movierate/',MovieRateListView.as_view(),name='drf-movierate-list'),
     path('movierate/<int:pk>/', MovieRateDetailView.as_view(), name='drf-movierate-detail'),
-
+    path('movieratecreate',MovieRateCreateView.as_view(),name='drf-movierate-create'),
+    path('movierateupdate/<int:pk>/',MovieRateUpdateView.as_view(),name='drf-movierate-update'),
+    path('movieratedelete/<int:pk>/',MovieRateDeleteView.as_view(),name='drf-movierate-delete'),
 ]
 
 if settings.DEBUG:

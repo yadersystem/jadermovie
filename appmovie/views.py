@@ -1,9 +1,10 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.views.generic.list import BaseListView
-from rest_framework.generics import ListAPIView, RetrieveAPIView
+from rest_framework.generics import ListAPIView, RetrieveAPIView, CreateAPIView, UpdateAPIView, DestroyAPIView
 from rest_framework.renderers import JSONRenderer
-from appmovie.api.serializers import MovieSerializer,MovieRaitingSerializer
+from appmovie.api.serializers import MovieSerializer, MovieRaitingSerializer, MovieRaitingSerializerCreate, \
+    MovieRaitingSerializerUpdate
 from appmovie.forms import UserForm
 from django.contrib.auth.models import User
 from django.views.generic import CreateView, ListView, UpdateView, DeleteView, DetailView
@@ -95,5 +96,20 @@ class MovieRateListView(ListAPIView):
 
 
 class MovieRateDetailView(RetrieveAPIView):
+    queryset = MovieRaiting.objects.all()
+    serializer_class = MovieRaitingSerializer
+
+
+class MovieRateCreateView(CreateAPIView):
+    queryset = MovieRaiting.objects.all()
+    serializer_class = MovieRaitingSerializerCreate
+
+
+class MovieRateUpdateView(UpdateAPIView):
+    queryset = MovieRaiting.objects.all()
+    serializer_class = MovieRaitingSerializerUpdate
+
+
+class MovieRateDeleteView(DestroyAPIView):
     queryset = MovieRaiting.objects.all()
     serializer_class = MovieRaitingSerializer

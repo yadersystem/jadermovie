@@ -65,7 +65,7 @@ class MovieRaiting(models.Model):
     id = models.AutoField(primary_key=True)
     movie = models.ForeignKey('Movie',on_delete=models.SET_NULL,null=True)
     user = models.ForeignKey(User,on_delete=models.SET_NULL,null=True)
-    comment = models.TextField(max_length=400 , default=None)
+    comment = models.TextField(max_length=400 , null=True, blank=True)
     select_vote = (
         (1, 1),
         (2, 2),
