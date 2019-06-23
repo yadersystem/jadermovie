@@ -46,3 +46,9 @@ class MovieRaitingSerializerDelete(serializers.ModelSerializer):
     class Meta:
         model = MovieRaiting
         field = ('id')
+
+
+class MovieRaitingSerializerAll(serializers.ModelSerializer):
+    class Meta:
+        model = MovieRaiting
+        fields = '__all__'

@@ -10,22 +10,29 @@
 
             <div class="row">
                 <div class="col-6">
-                    <h1>imagen pelicula</h1>
+                   <img src="{{ movie.poster.url }}">
                 </div>
-
                 <div class="col-6">
-                    <h2>descripcion pelicula</h2>
+                    <h2>{{ movie.title }}</h2>
+                    <h4>Durations: {{ movie.duration_q }} . min</h4>
+                    <h4>Director: {{ movie.director }}</h4>
+                    <h4>Actor: {{ movie.actor }}</h4>
+                    <h4>Genre: {{ movie.gender }}</h4>
+                    <h4>County: {{ movie.country }}</h4>
+                    <h4>Language: {{ movie.lenguage }}</h4>
+                    <h4>Year: {{ movie.year }}</h4>
+                    <h4>Rate:{{ movieraiting.vote }} </h4>
                 </div>
             </div>
 
             <div class="row">
 
                 <div class="col-12">
-                    <h1>Trilerssssssssssssssssssssssssssss</h1>
+                    <h1>Trilerssss</h1>
                 </div>
 
                 <div class="col-12">
-                    <h1>comentarios votos y estrellas</h1>
+                    <h5>Comments: {{ movie.detail }}</h5>
                 </div>
             </div>
 

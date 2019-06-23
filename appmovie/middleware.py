@@ -8,18 +8,8 @@ class SimpleMiddleware:
 
     def __call__(self, request):
 
-        '''token = request.META.get['HTTP_AUTHORIZATION','']
-        try:
-            if Token.objects.filter(token=token).exists():
-                data = Token.objects.get(token=token)
-                request.user = data.user
-        except Exception:
-            pass
-        response = self.get_response(request)
-        return response'''
-        if  request.user.is_anonymous:
+        if request.user.is_anonymous:
             token = request.META.get('HTTP_AUTHORIZATION', '')
-
             try:
                 if Token.objects.filter(token=token).exists():
                     data = Token.objects.get(token=token)

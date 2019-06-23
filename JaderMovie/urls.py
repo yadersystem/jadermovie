@@ -33,7 +33,10 @@ urlpatterns = [
     path('appmovie/', include('django.contrib.auth.urls')),
     # Rest Framework
     path('', include(router.urls)),
-    path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
+    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+
+    # Model ViewSet
+    #path('appmovie/',include(()))
 ]
 
 if settings.DEBUG:
