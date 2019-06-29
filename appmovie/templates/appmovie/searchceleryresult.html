@@ -1,0 +1,14 @@
+{% extends 'appmovie/base.html' %}
+{% load staticfiles %}
+{% block title %}Search Movie to Sites Webs{% endblock %}
+
+{% block content %}
+    <div class="align-content-center">
+        <h3 align="center">Search in the Web Sites</h3>
+        <form action="#" method="POST">
+            {% csrf_token %}
+            {{ form.as_p}}
+            <input type="submit" value="Send">
+        </form>
+    </div>
+{% endblock %}

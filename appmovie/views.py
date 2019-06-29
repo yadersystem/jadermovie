@@ -1,8 +1,10 @@
 import secrets
 from django.contrib.auth import logout
 from django.contrib.auth.views import LoginView, LogoutView
-from django.http import HttpResponse, request
+from django.http import HttpResponse, request, HttpResponseRedirect
 from django.shortcuts import render, redirect
+from django.views import View
+from django.views.generic.base import View
 from django.views.generic.list import BaseListView
 from rest_framework import viewsets
 from rest_framework.generics import ListAPIView, RetrieveAPIView, CreateAPIView, UpdateAPIView, DestroyAPIView
@@ -11,11 +13,12 @@ from rest_framework.renderers import JSONRenderer
 from appmovie.api.permissions import IsAuthenticatedOrReadOnlyCustom
 from appmovie.api.serializers import MovieSerializer, MovieRaitingSerializer, MovieRaitingSerializerCreate, \
     MovieRaitingSerializerUpdate, MovieRaitingSerializerAll
-from appmovie.forms import UserForm
+from appmovie.forms import UserForm, SimpleData
 from django.contrib.auth.models import User
 from django.views.generic import CreateView, ListView, UpdateView, DeleteView, DetailView
 from django.urls import reverse_lazy
 from appmovie.models import Movie, MovieRaiting,Token
+from appmovie.tasks import SearchMovieWebs
 from appmovie.queryset import MovieRateQueryset
 
 
@@ -30,6 +33,33 @@ def login(request):
 
 def search(request):
     return render(request, 'appmovie/search.html')
+
+
+#def searchcelery(request):
+    #return render(request,'appmovie/searchcelery.html')
+
+
+#def searchceleryresult(request):
+ #   return render(request, 'appmovie/searchceleryresult.html')
+
+class Searchceleryresult(DetailView):
+
+    def __init__(self):
+        self.template_name = 'appmovie/searchceleryresult.html'
+        self.form_class = SimpleData
+
+    def get(self, request, *args, **kwargs):
+        return render(request, self.template_name, {'form':SimpleData})
+
+    def post(self, request):
+        my_form = SimpleData(request.POST)
+        if my_form.is_valid():
+            my_title = my_form.cleaned_data['title']
+            my_reciver = my_form.cleaned_data['email']
+            my_list_movie = my_title.split(", ")
+            #SearchMovieWebs.delay(my_title)
+            SearchMovieWebs.s(my_list_movie, my_reciver)
+        return HttpResponseRedirect(reverse_lazy('appmovie:index'))
 
 
 class CreateUser(CreateView):

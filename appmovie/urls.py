@@ -32,7 +32,10 @@ urlpatterns = [
     path('movieratedelete/<int:pk>/',MovieRateDeleteView.as_view(),name='drf-movierate-delete'),
     # Viewset
     #path('movierateall',movierateall_list,name='drf-movierate-list'),
-    path('movierateall/<int:pk>/',movierateall_detail,name='drf-movierate-list')
+    path('movierateall/<int:pk>/',movierateall_detail,name='drf-movierate-list'),
+    # Search Celery
+    #path('searchcelery',views.searchcelery,name='searchcelery'),
+    path('searchcelery', views.Searchceleryresult.as_view(), name='searchcelery'),
 ]
 
 if settings.DEBUG:

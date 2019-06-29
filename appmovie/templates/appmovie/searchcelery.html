@@ -1,0 +1,14 @@
+{% extends 'appmovie/base.html' %}
+{% load staticfiles %}
+{% block title %}Search Movie to Sites Webs{% endblock %}
+
+{% block content %}
+    <div class="align-content-center">
+        <form method="post">
+            {% csrf_token %}
+            <h3>Search to Webs Sites of Movies</h3>
+            <input type="text" placeholder="Title Movie" name="title" id="title">
+            <a href="{% url 'appmovie:searchceleryresult' %}" class="btn btn-info">Search</a>
+        </form>
+    </div>
+{% endblock %}

@@ -7,6 +7,11 @@ from .models import Actor,Director,MovieRaiting,Movie, User
 from django import forms
 
 
+class SimpleData(forms.Form):
+    title = forms.CharField(max_length=100, label='Title')
+    email = forms.CharField(max_length=100, label='Email')
+
+
 class UserForm(forms.ModelForm):
 
     def save(self, commit=True):
